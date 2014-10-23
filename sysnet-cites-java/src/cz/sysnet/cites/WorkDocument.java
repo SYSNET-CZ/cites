@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
+import org.apache.commons.io.FilenameUtils;
+
+
 
 /**
  * Trida obsahuje strukturu a metody pracovniho dokumentu
@@ -21,8 +24,11 @@ public class WorkDocument implements Serializable {
 	private String tmpDir;
 	private String sourceXml;
 	private String sourceXmlPath;
+	private String sourceXmlFileName;
 	private String templatePath;
+	private String templateFileName;
 	private String outputPath;
+	private String outputFileName;
 	private boolean xfdf;
 	private String pid; 
 	private IdentFactory ifact;
@@ -141,6 +147,34 @@ public class WorkDocument implements Serializable {
 		this.pid = this.ifact.generateId(prefix);
 	}
 	
+	public String getSourceXmlFileName() {
+		File f = new File(this.sourceXmlPath);
+		this.sourceXmlFileName = f.getName();
+		return sourceXmlFileName;
+	}
+
+	public void setSourceXmlFileName(String sourceXmlFileName) {
+		this.sourceXmlFileName = sourceXmlFileName;
+		this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.sourceXmlFileName;
+		FilenameUtils.getExtension("/path/to/file/foo.txt");
+	}
+
+	public String getTemplateFileName() {
+		return templateFileName;
+	}
+
+	public void setTemplateFileName(String templateFileName) {
+		this.templateFileName = templateFileName;
+	}
+
+	public String getOutputFileName() {
+		return outputFileName;
+	}
+
+	public void setOutputFileName(String outputFileName) {
+		this.outputFileName = outputFileName;
+	}
+
 	public void loadXml() {
 		try {
 			if (!this.sourceXmlPath.isEmpty()) this.readFile(this.sourceXmlPath);			

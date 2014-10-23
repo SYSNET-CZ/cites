@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="lib/elasticsearch-1.3.4.jar" sourcepath="lib/elasticsearch-1.3.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/itextpdf-5.5.3.jar" sourcepath="lib/itextpdf-5.5.3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/itextpdf-5.5.3-javadoc.jar!/"/>
@@ -16,6 +15,12 @@
 	<classpathentry kind="lib" path="lib/itext-pdfa-5.5.3.jar" sourcepath="lib/itext-pdfa-5.5.3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/itext-pdfa-5.5.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/elasticsearch-134/elasticsearch-1.3.4.jar" sourcepath="lib/elasticsearch-134/elasticsearch-1.3.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4/commons-io-2.4.jar" sourcepath="lib/commons-io-2.4/commons-io-2.4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons-io-2.4/commons-io-2.4-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
