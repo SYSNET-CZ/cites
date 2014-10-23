@@ -33,8 +33,8 @@ public class WorkDocument implements Serializable {
 	private String pid; 
 	private IdentFactory ifact;
 	
-	public WorkDocument() {
-		if (ifact.equals(null)) ifact = new IdentFactory();
+	public WorkDocument(IdentFactory ifact) {
+		this.ifact = ifact;
 		this.pid = ifact.generateId("");
 		this.xfdf = false;
 		this.tmpDir = System.getProperty("java.io.tmpdir");
@@ -44,7 +44,8 @@ public class WorkDocument implements Serializable {
 		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";
 	}
 	
-	public WorkDocument(String pid, boolean xfdf) {
+	public WorkDocument(String pid, boolean xfdf, IdentFactory ifact) {
+		this.ifact = ifact;
 		this.pid = pid;
 		this.xfdf = xfdf;
 		String ext = ".xml";
@@ -56,7 +57,8 @@ public class WorkDocument implements Serializable {
 		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";		
 	}
 	
-	public WorkDocument(String pid, boolean xfdf, String templatePath) {
+	public WorkDocument(String pid, boolean xfdf, String templatePath, IdentFactory ifact) {
+		this.ifact = ifact;
 		this.pid = pid;
 		this.xfdf = xfdf;
 		String ext = ".xml";
@@ -148,31 +150,34 @@ public class WorkDocument implements Serializable {
 	}
 	
 	public String getSourceXmlFileName() {
-		File f = new File(this.sourceXmlPath);
-		this.sourceXmlFileName = f.getName();
+		this.sourceXmlFileName = FilenameUtils.getName(this.sourceXmlPath);
 		return sourceXmlFileName;
 	}
 
 	public void setSourceXmlFileName(String sourceXmlFileName) {
 		this.sourceXmlFileName = sourceXmlFileName;
 		this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.sourceXmlFileName;
-		FilenameUtils.getExtension("/path/to/file/foo.txt");
+		if (FilenameUtils.getExtension(this.sourceXmlPath).toLowerCase().equals("xfdf")) this.xfdf = true;		
 	}
 
 	public String getTemplateFileName() {
+		this.templateFileName = FilenameUtils.getName(this.templatePath);
 		return templateFileName;
 	}
 
 	public void setTemplateFileName(String templateFileName) {
 		this.templateFileName = templateFileName;
+		this.templatePath = this.tmpDir + System.getProperty("file.separator") + this.templateFileName;
 	}
 
 	public String getOutputFileName() {
+		this.outputFileName = FilenameUtils.getName(this.outputPath);
 		return outputFileName;
 	}
 
 	public void setOutputFileName(String outputFileName) {
 		this.outputFileName = outputFileName;
+		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.outputPath;
 	}
 
 	public void loadXml() {

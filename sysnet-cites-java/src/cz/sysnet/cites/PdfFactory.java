@@ -31,12 +31,20 @@ public class PdfFactory implements Serializable {
 	private PdfStamper outPdf;
 	
 	public PdfFactory() {
-		this.doc = new WorkDocument();
+		this.doc = new WorkDocument(new IdentFactory());
 		this.form = null;
 		this.data = null;
 		this.xfa = null;
 		this.outPdf = null;
 		this.printDebug("OS current temporary directory is " + this.doc.getTmpDir());
+	}
+	
+	public PdfFactory(WorkDocument doc) {
+		this.doc = doc;
+		this.form = null;
+		this.data = null;
+		this.xfa = null;
+		this.outPdf = null;		
 	}
 	
 	public void setSourcePath(String sourcePath) throws IOException {
