@@ -3,11 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="lib/elasticsearch-134/elasticsearch-1.3.4.jar" sourcepath="lib/elasticsearch-134/elasticsearch-1.3.4-sources.jar"/>
-	<classpathentry kind="lib" path="lib/commons-io-2.4/commons-io-2.4.jar" sourcepath="lib/commons-io-2.4/commons-io-2.4-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons-io-2.4/commons-io-2.4-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="lib/itext-5.5.3/itextpdf-5.5.3.jar" sourcepath="lib/itext-5.5.3/itextpdf-5.5.3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/itext-5.5.3/itextpdf-5.5.3-javadoc.jar!/"/>
@@ -21,6 +16,48 @@
 	<classpathentry kind="lib" path="lib/itext-5.5.3/itext-xtra-5.5.3.jar" sourcepath="lib/itext-5.5.3/itext-xtra-5.5.3-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/itext-5.5.3/itext-xtra-5.5.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/httpcomponents-client-4.3.5/httpclient-4.3.5.jar"/>
+	<classpathentry kind="lib" path="lib/httpcomponents-client-4.3.5/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/httpcomponents-client-4.3.5/fluent-hc-4.3.5.jar"/>
+	<classpathentry kind="lib" path="lib/httpcomponents-client-4.3.5/httpclient-cache-4.3.5.jar"/>
+	<classpathentry kind="lib" path="lib/httpcomponents-client-4.3.5/httpmime-4.3.5.jar"/>
+	<classpathentry kind="lib" path="lib/json/json-lib-2.4-jdk15.jar" sourcepath="lib/json/json-lib-2.4-jdk15-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/json/json-lib-2.4-jdk15-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/json/ezmorph-1.0.6.jar" sourcepath="lib/json/json-lib-2.4-jdk15-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/json/ezmorph-1.0.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons/commons-io-2.4.jar" sourcepath="lib/commons/commons-io-2.4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons/commons-io-2.4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons/commons-lang-2.6.jar" sourcepath="lib/commons/commons-lang-2.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons/commons-lang-2.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons/commons-collections4-4.0.jar" sourcepath="lib/commons/commons-collections4-4.0-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons/commons-collections4-4.0-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons/commons-collections-3.2.1.jar" sourcepath="lib/commons/commons-collections-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons/commons-collections-3.2.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons/commons-beanutils-1.9.2.jar" sourcepath="lib/commons/commons-beanutils-1.9.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/sysnet-cites-java/lib/commons/commons-beanutils-1.9.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
