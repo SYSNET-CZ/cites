@@ -1,13 +1,12 @@
 package cz.sysnet.cites;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import org.apache.commons.io.FilenameUtils;
+import com.itextpdf.text.pdf.*;
 
 
 
@@ -20,6 +19,8 @@ import org.apache.commons.io.FilenameUtils;
 public class WorkDocument implements Serializable {
 	private static final long serialVersionUID = -3807706717887929820L;
 	private static final String BEAN_NAME = "WorkDocument";
+	private static final Charset CS = Charset.forName("UTF-8");
+	
 	
 	private String tmpDir;
 	private String sourceXml;
@@ -70,7 +71,6 @@ public class WorkDocument implements Serializable {
 		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";
 	}
 	
-
 	public static String getBeanName() {
 		return BEAN_NAME;
 	}
@@ -79,7 +79,7 @@ public class WorkDocument implements Serializable {
 		return sourceXml;
 	}
 
-	public void setSourceXml(String sourceXml) throws IOException {
+	public void setSourceXml(String sourceXml) {
 		this.sourceXml = sourceXml;
 		if (this.sourceXmlPath.isEmpty()) {
 			if (this.pid.isEmpty()) this.pid = this.ifact.generateId("");
@@ -105,6 +105,7 @@ public class WorkDocument implements Serializable {
 
 	public void setTemplatePath(String templatePath) {
 		this.templatePath = templatePath;
+		this.templateFileName = FilenameUtils.getName(this.templatePath);
 	}
 
 	public String getOutputPath() {
@@ -139,10 +140,10 @@ public class WorkDocument implements Serializable {
 		this.pid = pid;	
 		String ext = ".xml";
 		if (this.xfdf) ext = ".xfdf";
-		this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ext;
+		this.sourceXmlPath = this.tmpDir + this.pid.toLowerCase() + ext;
 		this.loadXml();
 		this.templatePath = null;
-		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";			
+		this.outputPath = this.tmpDir + this.pid.toLowerCase() + ".pdf";			
 	}
 	
 	public void generatePid(String prefix) {
@@ -189,11 +190,25 @@ public class WorkDocument implements Serializable {
 		}
 	}
 	
-	private void writeFile(String file, String content) throws IOException {
-		Charset cs = Charset.forName("UTF-8");
-		FileOutputStream xmlo = new FileOutputStream(file);
-		xmlo.write(content.getBytes(cs));
-		xmlo.close();
+	private void writeFile(String file, String content) {
+		FileOutputStream xmlo = null;
+		try {
+			Charset cs = Charset.forName("UTF-8");
+			xmlo = new FileOutputStream(file);
+			xmlo.write(content.getBytes(cs));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (xmlo != null) {
+				try {
+					xmlo.flush();
+					xmlo.close();
+				} catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	private String readFile( String filePath ) throws IOException {
@@ -224,4 +239,132 @@ public class WorkDocument implements Serializable {
 		}
 		return out;
 	}
+	
+	private boolean isReady() {
+		boolean out = false;
+		if(!this.outputPath.isEmpty() && !this.sourceXmlPath.isEmpty() && !this.templatePath.isEmpty()) {
+			out = true;
+		}
+		
+		return out;
+	}
+	
+	/**
+	 * Vytvori ploche pdf z XML dat a sablony a ulozi je do FS
+	 * 
+	 * @return	vraci cestu k vytvorenemu PDF
+	 */
+	public String createPdf() {
+		String out = null;
+		PdfReader form = null;
+		XfdfReader data = null;
+		XfaForm xfa = null;
+		PdfStamper outPdf = null;
+		if(this.isReady()) {
+			try {
+				form = new PdfReader(this.templatePath);
+				outPdf = new PdfStamper(form, new FileOutputStream(this.outputPath), '\0', true);
+				AcroFields aform = outPdf.getAcroFields();
+				if (this.xfdf) {
+					this.loadXml();
+					data = new XfdfReader(this.sourceXml.getBytes(CS));
+					aform.setFields(data);
+					aform = this.consolidateDate(aform);
+				} else {
+					xfa = aform.getXfa();
+					xfa.fillXfaForm(new FileInputStream(this.sourceXmlPath));					
+				}
+				out = this.outputPath;
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			} 
+			finally {
+				if (outPdf != null) {
+					try {
+						outPdf.setFormFlattening(true);
+						outPdf.close();
+					} catch (Exception e) {
+						out = null;
+					}
+				}
+
+				if (!this.xfdf) this.removeFile(this.sourceXmlPath);
+			}
+		}
+		return out;	
+	}
+
+
+/**
+ * Konsoliduje obsah XFDF tak aby polozky typu datum mely spravny format 
+ * 
+ * @param fields	datova pole
+ * @return			vraci aktualizovana datova pole
+ */
+private AcroFields consolidateDate(AcroFields fields) {
+	try {
+		Map <String,AcroFields.Item>  fieldMap = fields.getFields();
+		Set <String> keys = fieldMap.keySet();
+		
+		for (Iterator <String> it = keys.iterator(); it.hasNext();) {
+			String fieldName = (String) it.next();
+			if (fieldName.toLowerCase().contains("date")) {
+				String fieldValue = fields.getField(fieldName);
+				if(fieldValue.toUpperCase().startsWith("D:")) {
+					fields.setField(fieldName, this.changeDateFormat(fieldValue));
+					fieldValue = fields.getField(fieldName);
+               	}
+               }
+		}
+		return fields;	
+	} catch(Exception e) {
+		return null;
+	}		
+}
+
+/**
+ * Zmeni format data v XFDF poli na korektni hodnotu. Pouziva se pouze v metode consolidateDate
+ * 
+ * @param 	dateValue	Textova hodnota data ve formatu ISO
+ * @return	vraci textovou hodnotu data ve formatu XFDF "D:20030425095243"
+ */
+private String changeDateFormat(String dateValue) {
+	String changedDate = dateValue;
+	try {
+		if (dateValue == "") return "";
+		if (dateValue.toUpperCase().startsWith("D:")) {
+			String year = "";
+			String month = "";
+			String day = "";
+			String hour = "";
+			String minute = "";
+			String sec = "";	
+			int len = dateValue.length();
+			
+			//System.out.println(len);
+
+			year = dateValue.substring(2,6);
+			month = dateValue.substring(6,8);
+			day = dateValue.substring(8,10);
+			
+			if (len > 10) {
+				hour = dateValue.substring(10,12);
+				minute = dateValue.substring(12,14);
+				sec = dateValue.substring(14,16);
+			}
+			changedDate = day + "." + month + "." + year;
+
+			if (len > 10) {
+				changedDate = changedDate + " " + hour + ":" + minute + ":" + sec;
+			}
+		}
+		else {
+			changedDate = dateValue;
+		}			
+	} catch (Exception e) {
+		changedDate = dateValue;
+	}
+	return changedDate;
+}
 }

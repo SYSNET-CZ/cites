@@ -1,6 +1,10 @@
 package cz.sysnet.cites;
 
-import java.io.Serializable;
+import java.io.*;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 public class PdfTemplate implements Serializable {
 	private static final String BEAN_NAME = "PdfTemplate";
@@ -29,7 +33,14 @@ public class PdfTemplate implements Serializable {
 		this.url = url;
 		this.filepath = filepath;
 	}
-
+	
+	public PdfTemplate(PdfTemplate source) {
+		this.filename = source.getFilename();
+		this.filepath = source.getFilepath();
+		this.id = source.getId();
+		this.name = source.getName();
+		this.url = source.getUrl();
+	}
 
 	public String getId() {
 		return id;
@@ -75,4 +86,43 @@ public class PdfTemplate implements Serializable {
 		return BEAN_NAME;
 	}
 	
+	public void storeFile() {
+        InputStream ist = null;
+        OutputStream ost = null;
+
+		if (!this.url.isEmpty()) {
+			if (!this.filepath.isEmpty()) {
+				try {
+					HttpClient client = HttpClientBuilder.create().build();
+			        HttpGet request = new HttpGet(this.url);
+			        HttpResponse response = client.execute(request);
+			        ist = response.getEntity().getContent();
+			        ost = new FileOutputStream(new File(this.filepath));
+			        
+			        int read = 0;
+					byte[] bytes = new byte[1024];
+			 
+					while ((read = ist.read(bytes)) != -1) {
+						ost.write(bytes, 0, read);
+					}
+				} 
+				catch (Exception e) {
+					e.printStackTrace();
+				} 
+				finally {
+					if (ist != null) { 
+						try { ist.close(); } catch (Exception e) { e.printStackTrace();}
+					}
+					if (ost != null) {
+						try {
+							ost.flush();
+							ost.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+	}
 }
