@@ -3,7 +3,7 @@ package cz.sysnet.cites;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class IdentFactory implements Serializable {
+public class IdentFactory implements Serializable, IdGenerator {
 	private static final long serialVersionUID = 1808848911227008508L;
 	private static final String BEAN_NAME = "IdentFactory";
 	
@@ -34,9 +34,9 @@ public class IdentFactory implements Serializable {
 			
 		} catch (Exception e) {
 			return "";
-		}
-		
+		}	
 	}
+	
 
 	public UUID getUid() {
 		return uid;

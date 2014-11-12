@@ -31,26 +31,18 @@ public class PdfFactory implements Serializable {
 	private PdfStamper outPdf;
 	private Map<String, PdfTemplate> template;
 	
-	public PdfFactory() {
-		this.doc = new WorkDocument(new IdentFactory());
-		this.form = null;
-		this.data = null;
-		this.xfa = null;
-		this.outPdf = null;
-		this.template = new HashMap<String, PdfTemplate>(); 		
-		this.printDebug("OS current temporary directory is " + this.doc.getTmpDir());
-
-	}
+	
 	
 	public PdfFactory(WorkDocument doc) {
 		this.doc = doc;
-		this.form = null;
-		this.data = null;
-		this.xfa = null;
-		this.outPdf = null;		
 		this.template = new HashMap<String, PdfTemplate>();		
+		this.printDebug("OS current temporary directory is " + this.doc.getTmpDir());
 	}
 	
+	public PdfFactory() {
+		this(new WorkDocument(new IdentFactory()));
+	}
+
 	public void loadTemplates(String sourceUrl) {
 		HttpClient client = null;
         HttpGet request = null;

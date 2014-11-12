@@ -32,43 +32,43 @@ public class WorkDocument implements Serializable {
 	private String outputFileName;
 	private boolean xfdf;
 	private String pid; 
-	private IdentFactory ifact;
+	private IdGenerator ig;
 	
-	public WorkDocument(IdentFactory ifact) {
-		this.ifact = ifact;
-		this.pid = ifact.generateId("");
+	public WorkDocument(IdGenerator ig) {
+		this.ig = ig;
+		this.pid = ig.generateId("");
 		this.xfdf = false;
 		this.tmpDir = System.getProperty("java.io.tmpdir");
 		this.sourceXml = null;
 		this.sourceXmlPath = null;
 		this.templatePath = null;
-		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";
+		this.outputPath = this.tmpDir + this.pid.toLowerCase() + ".pdf";
 	}
 	
-	public WorkDocument(String pid, boolean xfdf, IdentFactory ifact) {
-		this.ifact = ifact;
+	public WorkDocument(String pid, boolean xfdf, IdGenerator ig) {
+		this.ig = ig;
 		this.pid = pid;
 		this.xfdf = xfdf;
 		String ext = ".xml";
 		if (this.xfdf) ext = ".xfdf";
 		this.tmpDir = System.getProperty("java.io.tmpdir");
-		this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ext;
+		this.sourceXmlPath = this.tmpDir + this.pid.toLowerCase() + ext;
 		this.loadXml();
 		this.templatePath = null;
-		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";		
+		this.outputPath = this.tmpDir + this.pid.toLowerCase() + ".pdf";		
 	}
 	
-	public WorkDocument(String pid, boolean xfdf, String templatePath, IdentFactory ifact) {
-		this.ifact = ifact;
+	public WorkDocument(String pid, boolean xfdf, String templatePath, IdGenerator ig) {
+		this.ig = ig;
 		this.pid = pid;
 		this.xfdf = xfdf;
 		String ext = ".xml";
 		if (this.xfdf) ext = ".xfdf";
 		this.tmpDir = System.getProperty("java.io.tmpdir");
-		this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ext;
+		this.sourceXmlPath = this.tmpDir + this.pid.toLowerCase() + ext;
 		this.loadXml();
 		this.templatePath = templatePath;
-		this.outputPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ".pdf";
+		this.outputPath = this.tmpDir + this.pid.toLowerCase() + ".pdf";
 	}
 	
 	public static String getBeanName() {
@@ -82,7 +82,7 @@ public class WorkDocument implements Serializable {
 	public void setSourceXml(String sourceXml) {
 		this.sourceXml = sourceXml;
 		if (this.sourceXmlPath.isEmpty()) {
-			if (this.pid.isEmpty()) this.pid = this.ifact.generateId("");
+			if (this.pid.isEmpty()) this.pid = this.ig.generateId("");
 			String ext = ".xml";
 			if (this.xfdf) ext = ".xfdf";
 			this.sourceXmlPath = this.tmpDir + System.getProperty("file.separator") + this.pid.toLowerCase() + ext;
@@ -147,7 +147,7 @@ public class WorkDocument implements Serializable {
 	}
 	
 	public void generatePid(String prefix) {
-		this.pid = this.ifact.generateId(prefix);
+		this.pid = this.ig.generateId(prefix);
 	}
 	
 	public String getSourceXmlFileName() {
