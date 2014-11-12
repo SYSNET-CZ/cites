@@ -1,5 +1,8 @@
 package test;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 import cz.sysnet.cites.IdentFactory;
 import static org.junit.Assert.*;
 
@@ -17,4 +20,12 @@ public class testIdentFactory {
 		   String id = identFactory.generateId("TEST");
 		   assertTrue(id.startsWith("TES"));		   
 	    }
+	   
+	   @Before
+	   public void beforeRun() {}
+	   
+	   @After
+	   public void afterRun() {}
+	   
+	   
 }
