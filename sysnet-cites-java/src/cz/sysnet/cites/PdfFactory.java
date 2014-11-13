@@ -40,7 +40,7 @@ public class PdfFactory implements Serializable {
 	}
 	
 	public PdfFactory() {
-		this(new WorkDocument(new IdentFactory()));
+		this(new WorkDocument(new PidGenerator()));
 	}
 
 	public void loadTemplates(String sourceUrl) {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
+	<fields>
+		<field name="annex-es">
+			<value>A</value>
+		</field>
+		<field name="appendix-cites">
+			<value>II</value>
+		</field>
+		<field name="authority">
+			<value>Testovací organizace
+kuchyňka
+Kolmá 1
+555 555 Horní Lhota
+Česká republika</value>
+		</field>
+		<field name="common">
+			<value>želva zelenavá</value>
+		</field>
+		<field name="conditions">
+			<value/>
+		</field>
+		<field name="country_import">
+			<value/>
+		</field>
+		<field name="country_origin">
+			<value>Česká republika CZ</value>
+		</field>
+		<field name="date_external">
+			<value>D:20131024</value>
+		</field>
+		<field name="date_import">
+			<value>D:20131024</value>
+		</field>
+		<field name="description">
+			<value>LIV - živé/live
+Pohlaví: neurčeno N/A
+Fotografie přiložena
+Dovezen do ČR: 24.10.2013
+</value>
+		</field>
+		<field name="form">
+			<value>registration</value>
+		</field>
+		<field name="holder">
+			<value>Pokus  Testovací
+Nová 1
+Horní Tady
+CZ</value>
+		</field>
+		<field name="id_no">
+			<value>AAAAA/00095/2013</value>
+		</field>
+		<field name="issuing_date">
+			<value>D:20131024</value>
+		</field>
+		<field name="issuing_official">
+			<value>PUDr. Abč Xýž</value>
+		</field>
+		<field name="issuing_place">
+			<value>Horní Lhota</value>
+		</field>
+		<field name="mass">
+			<value/>
+		</field>
+		<field name="permit_external">
+			<value/>
+		</field>
+		<field name="permit_import">
+			<value/>
+		</field>
+		<field name="quantity">
+			<value>1</value>
+		</field>
+		<field name="send"/>
+		<field name="signature">
+			<value>PUDr. Jiří Novák, MBA</value>
+		</field>
+		<field name="source">
+			<value/>
+		</field>
+		<field name="species">
+			<value>Testudo hermanni</value>
+		</field>
+		<field name="validity_2">
+			<value>1</value>
+		</field>
+		<field name="validity_3">
+			<value>1</value>
+		</field>
+		<field name="validity_4">
+			<value>false</value>
+		</field>
+	</fields>
+	<ids original="67CD167345F671C4C1257C0E004D998D" modified="67CD167345F671C4C1257C0E004D998D"/>
+	<f href="http://www.env.cz/__C125701F001ACE22.nsf/pdf-forms/11re/$file/11-reglist_form.pdf"/>
+</xfdf>

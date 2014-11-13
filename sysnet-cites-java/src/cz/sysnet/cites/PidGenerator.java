@@ -3,14 +3,14 @@ package cz.sysnet.cites;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class IdentFactory implements Serializable, IdGenerator {
+public class PidGenerator implements Serializable, IdGenerator {
 	private static final long serialVersionUID = 1808848911227008508L;
 	private static final String BEAN_NAME = "IdentFactory";
 	
 	private UUID uid;
 	private String id;
 	
-	public IdentFactory() {
+	public PidGenerator() {
 		this.generateId("");
 	}
 	

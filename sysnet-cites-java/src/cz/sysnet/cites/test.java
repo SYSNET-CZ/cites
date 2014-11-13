@@ -17,14 +17,14 @@ public class test {
 	 */
 	static PdfFactory pfact;
 	static WorkDocument wdoc;
-	static IdentFactory ifact;
+	static PidGenerator ifact;
 	static final String EOL = System.getProperty("line.separator");
 	static final String RESTURL = "http://athos.sysnet.cz/clients/env/cites/v3/cites-admin300.nsf/api/data/collections/name/pdf-forms";
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		ifact = new IdentFactory();
+		ifact = new PidGenerator();
 		wdoc = new WorkDocument(ifact);
 		pfact = new PdfFactory(wdoc);
 		pfact.setDebug(true);
