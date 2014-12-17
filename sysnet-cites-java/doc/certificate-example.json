@@ -1,0 +1,168 @@
+{
+  "xfdf": {
+    "-xmlns": "http://ns.adobe.com/xfdf/",
+    "-xml:space": "preserve",
+    "fields": {
+      "field": [
+        {
+          "-name": "annex-es",
+          "value": "A"
+        },
+        {
+          "-name": "appendix-cites",
+          "value": "II"
+        },
+        {
+          "-name": "authority",
+          "value": "Testovací organizace
+kuchyňka
+Kolmá 1
+555 555 Horní Lhota
+Česká republika"
+        },
+        { "-name": "certtype_leg" },
+        {
+          "-name": "certtype_com",
+          "value": "1"
+        },
+        { "-name": "certtype_mov" },
+        { "-name": "certified_1" },
+        { "-name": "certified_2" },
+        { "-name": "certified_3" },
+        { "-name": "certified_4" },
+        { "-name": "certified_5" },
+        { "-name": "certified_6" },
+        { "-name": "certified_7" },
+        { "-name": "certified_8" },
+        { "-name": "v2certified_1" },
+        { "-name": "v2certified_2" },
+        {
+          "-name": "v2certified_3",
+          "value": "1"
+        },
+        { "-name": "v2certified_4" },
+        { "-name": "v2certified_5" },
+        { "-name": "v2certified_6" },
+        { "-name": "v2certified_7" },
+        {
+          "-name": "common",
+          "value": "želva zelenavá"
+        },
+        {
+          "-name": "conditions",
+          "value": "zvláštní podmínka 1
+zvláštní podmínka 2"
+        },
+        {
+          "-name": "country_import",
+          "value": "Alžírsko DZ"
+        },
+        {
+          "-name": "country_origin",
+          "value": "Česká republika CZ"
+        },
+        {
+          "-name": "date_external",
+          "value": "D:20141015"
+        },
+        {
+          "-name": "date_import",
+          "value": "D:20141022"
+        },
+        {
+          "-name": "description",
+          "value": "LIV - živé/live
+Pohlaví: neurčeno - mládě JUV
+Číslo čipu: 111222333
+Narozen: 12.10.2014 U Dubu
+Dovezen do ČR: 29.10.2014
+Registrační list: 111333
+další záznam 1
+další záznam 2"
+        },
+        {
+          "-name": "form",
+          "value": "certificate"
+        },
+        {
+          "-name": "holder",
+          "value": "Tester  Testovič
+Testovací 10
+123 65 Městečko
+CZ
+Tester  Testovič
+Testovací 5
+555 55 Neználkov
+CZ"
+        },
+        {
+          "-name": "id_no",
+          "value": "CZ/AAAAA/15574/2014"
+        },
+        {
+          "-name": "issuing_date",
+          "value": "D:20141031"
+        },
+        {
+          "-name": "issuing_official",
+          "value": "PUDr. Abč Xýž"
+        },
+        {
+          "-name": "issuing_place",
+          "value": "Horní Lhota"
+        },
+        { "-name": "issuing_purpose" },
+        { "-name": "v2issuing_purpose_1" },
+        {
+          "-name": "v2issuing_purpose_2",
+          "value": "1"
+        },
+        { "-name": "v2issuing_purpose_3" },
+        { "-name": "v2issuing_purpose_4" },
+        { "-name": "v2issuing_purpose_5" },
+        {
+          "-name": "location",
+          "value": "Povolené místo"
+        },
+        {
+          "-name": "mass",
+          "value": "0,7"
+        },
+        {
+          "-name": "permit_external",
+          "value": "555444"
+        },
+        {
+          "-name": "permit_import",
+          "value": "999888"
+        },
+        {
+          "-name": "quantity",
+          "value": "1"
+        },
+        { "-name": "send" },
+        {
+          "-name": "signature",
+          "value": "PUDr. Jiří Novák, MBA"
+        },
+        {
+          "-name": "source",
+          "value": "C"
+        },
+        {
+          "-name": "species",
+          "value": "Testudo hermanni"
+        },
+        {
+          "-name": "valid_for_holder",
+          "value": "0"
+        }
+      ]
+    },
+    "ids": {
+      "-original": "6BF8D350198DB7E3C1257D82003EEF58",
+      "-modified": "6BF8D350198DB7E3C1257D82003EEF58"
+    },
+    "f": { "-href": "http://cites.env.cz/__c125774a005c1a3e.nsf/pdf-forms/051/$file/051-certificate_form.pdf" }
+  }
+}

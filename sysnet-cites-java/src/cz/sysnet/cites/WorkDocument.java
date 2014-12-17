@@ -137,7 +137,7 @@ public class WorkDocument implements Serializable {
 	}
 
 	public void setPid(String pid) {
-		this.pid = pid;	
+		this.pid = pid.toUpperCase();	
 		String ext = ".xml";
 		if (this.xfdf) ext = ".xfdf";
 		this.sourceXmlPath = this.tmpDir + this.pid.toLowerCase() + ext;
@@ -183,7 +183,9 @@ public class WorkDocument implements Serializable {
 
 	public void loadXml() {
 		try {
-			if (!this.sourceXmlPath.isEmpty()) this.readFile(this.sourceXmlPath);			
+			if (!this.sourceXmlPath.isEmpty()) {
+				this.sourceXml = this.readFile(this.sourceXmlPath);
+			}
 		} 
 		catch(IOException e) {
 			this.sourceXml = "";

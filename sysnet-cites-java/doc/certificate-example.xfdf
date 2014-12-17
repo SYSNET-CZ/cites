@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
+<fields>
+<field name="annex-es"><value>A</value></field>
+<field name="appendix-cites"> <value>II</value></field>
+<field name="authority"><value>Testovací organizace
+kuchyňka
+Kolmá 1
+555 555 Horní Lhota
+Česká republika</value></field>
+<field name="certtype_leg"><value></value></field>
+<field name="certtype_com"><value>1</value></field>
+<field name="certtype_mov"><value></value></field>
+<field name="certified_1"><value/></field>
+<field name="certified_2"><value/></field>
+<field name="certified_3"><value/></field>
+<field name="certified_4"><value/></field>
+<field name="certified_5"><value/></field>
+<field name="certified_6"><value/></field>
+<field name="certified_7"><value/></field>
+<field name="certified_8"><value/></field>
+<field name="v2certified_1"><value/></field>
+<field name="v2certified_2"><value/></field>
+<field name="v2certified_3"><value>1</value></field>
+<field name="v2certified_4"><value/></field>
+<field name="v2certified_5"><value/></field>
+<field name="v2certified_6"><value/></field>
+<field name="v2certified_7"><value/></field>
+<field name="common"><value>želva zelenavá</value> </field>
+<field name="conditions"><value>zvláštní podmínka 1
+zvláštní podmínka 2</value> </field>
+<field name="country_import"><value>Alžírsko DZ</value></field>
+<field name="country_origin"><value>Česká republika CZ</value></field>
+<field name="date_external"><value>D:20141015</value></field>
+<field name="date_import"><value>D:20141022</value></field>
+<field name="description"><value>LIV - živé/live
+Pohlaví: neurčeno - mládě JUV
+Číslo čipu: 111222333
+Narozen: 12.10.2014 U Dubu
+Dovezen do ČR: 29.10.2014
+Registrační list: 111333
+další záznam 1
+další záznam 2</value></field>
+<field name="form"><value>certificate</value></field>
+<field name="holder"><value>Tester  Testovič
+Testovací 10
+123 65 Městečko
+CZ
+Tester  Testovič
+Testovací 5
+555 55 Neználkov
+CZ</value></field>
+<field name="id_no"><value>CZ/AAAAA/15574/2014</value></field>
+<field name="issuing_date"><value>D:20141031</value></field>
+<field name="issuing_official"><value>PUDr. Abč Xýž</value></field>
+<field name="issuing_place"><value>Horní Lhota</value></field>
+<field name="issuing_purpose"><value></value></field>
+<field name="v2issuing_purpose_1"><value/></field>
+<field name="v2issuing_purpose_2"><value>1</value></field>
+<field name="v2issuing_purpose_3"><value/></field>
+<field name="v2issuing_purpose_4"><value/></field>
+<field name="v2issuing_purpose_5"><value/></field>
+<field name="location"><value>Povolené místo</value></field>
+<field name="mass"><value>0,7</value></field>
+<field name="permit_external"><value>555444</value></field>
+<field name="permit_import"><value>999888</value></field>
+<field name="quantity"><value>1</value></field>
+<field name="send"/>
+<field name="signature"><value>PUDr. Jiří Novák, MBA</value></field>
+<field name="source"><value>C</value></field>
+<field name="species"><value>Testudo hermanni</value></field>
+<field name="valid_for_holder"><value>0</value></field>
+</fields>
+<ids original="6BF8D350198DB7E3C1257D82003EEF58" modified="6BF8D350198DB7E3C1257D82003EEF58"/>
+<f href="http://cites.env.cz/__c125774a005c1a3e.nsf/pdf-forms/051/$file/051-certificate_form.pdf"/>
+</xfdf>
